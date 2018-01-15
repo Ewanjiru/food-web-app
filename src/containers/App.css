@@ -1,0 +1,177 @@
+*{
+  font-family: sans-serif;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.content-wrapper{
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.sidebar{
+  display: block;
+  width: 15%;
+  background-color:rgb(77, 74, 111);
+  align-content: left;
+  text-align: left;
+  color:rgb(183, 183, 183);
+}
+
+.sidebar img{
+  margin: 15px 15px 0px;
+}
+
+.sidebar h5{
+  margin-left: 11%;
+  margin-top: 30px;
+  font-size: .6em;
+  margin-bottom: 20px;
+}
+
+.sidebar ul{
+  list-style: none;
+}
+
+.sidebar ul li a{
+  color: rgb(176, 176, 176);
+}
+
+.sidebar ul li a:hover{
+  color:white;
+  background-color: rgb(67, 64, 89);
+}
+
+.sidebar ul li  a:active{
+  color:white;
+  background-color: rgb(67, 64, 89);
+}
+
+.sidebar li{
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.sidebar li .fa{
+  margin-right: 11%;
+  margin-left:  11%;
+}
+
+.sidebar li a{
+  padding: 0px;
+}
+
+.content{
+  display: block;
+  border: 1px solid black;
+  width: 85%;
+  background-color:rgb(228, 248, 255);
+}
+
+.header{
+  display: flex;
+  box-shadow:0px 0px 5px grey;
+}
+
+.header .navbar{
+  width: 100%;
+  display: block;
+  background-color: white;
+}
+
+.header .input-group{
+  width: 200px;
+  float: right;
+}
+
+.header .input-group input{
+  background-color: rgb(243, 240, 237);
+  opacity: 0.6;
+}
+
+.profile{
+  width: 100px;
+  float: right;
+  margin-left: 10px;
+}
+
+.profile-picture{
+  border-radius: 50%;
+  width: 40px;
+  height: 30px;
+}
+
+.toggle-options{
+  width: 100%;
+  height: 94%;
+}
+
+.vendors{
+  width: 97%;
+  background-color: white;
+  margin: 15px auto;
+  height: 90%;
+  border-radius: 10px;
+}
+
+.vendors-header{
+  border-radius: 2%;
+}
+
+.vendors-header .navbar{
+  background-color: rgb(77, 74, 111);;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+}
+
+.vendors-header .navbar h6{
+  width: 50%;
+  color: whitesmoke;
+  float: left;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.vendors-header .navbar .fa{
+  color: whitesmoke;
+  float: right;
+  text-align: left;
+  width: 50%;
+}
+
+.vendors .table{
+  text-align: left;
+  color: lightgrey;
+}
+
+#first-column{
+  color: rgb(39, 164, 166);
+}
