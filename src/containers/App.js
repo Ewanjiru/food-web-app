@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import Home from '../components/home';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Home from '../Components/home';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Home />
+      <div className="login">
+          <Router>
+            <div>
+              <Route path="/" component={Home} />
+            </div>
+          </Router>
       </div>
     );
   }

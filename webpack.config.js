@@ -15,7 +15,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, include: [path.join(__dirname, 'src'), 'node_modules'], loaders: ['babel-loader'] },
+      { test: /\.js|jsx$/, include: [path.join(__dirname, 'src'), 'node_modules'], loaders: ['babel-loader'] },
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
@@ -31,6 +31,6 @@ module.exports = {
       filename: 'index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 };
