@@ -11,19 +11,14 @@
     "material-ui": "^0.20.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
-<<<<<<< HEAD
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^5.0.0-alpha.4",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
-=======
+    "redux-thunk": "^2.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "reactstrap": "^5.0.0-alpha.4",
     "sass": "^1.0.0-beta.4"
->>>>>>> add css to the dashboard page
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -32,10 +27,7 @@
     "css-loader": "^0.28.8",
     "html-webpack-plugin": "^2.30.1",
     "react-scripts": "1.0.17",
-<<<<<<< HEAD
     "redux-devtools-extension": "^2.13.2",
-=======
->>>>>>> add css to the dashboard page
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",

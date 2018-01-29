@@ -14,12 +14,6 @@ class App extends Component {
       <div>
         {this.props.children}
       </div>
-          <Router>
-            <div>
-              <Route path="/" component={Dashboard} />
-              <Route path ="/dashboard" component={Dashboard} />
-            </div>
-          </Router>
     );
   }
 }
