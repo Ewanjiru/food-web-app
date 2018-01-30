@@ -1,12 +1,12 @@
 const firebase = require('firebase');
 
 const config = {
-  apiKey: "AIzaSyCAbLn0Zris9TPCpmbX3SyRHYPTRTuUNTM",
-  authDomain: "food-app-192210.firebaseapp.com",
-  databaseURL: "https://food-app-192210.firebaseio.com",
-  projectId: "food-app-192210",
-  storageBucket: "",
-  messagingSenderId: "183206900291"
+  apiKey: "AIzaSyAQLokf93e22QxApccpZfvRqRlPyrKM2Mg",
+  authDomain: "meal-attendance-app.firebaseapp.com",
+  databaseURL: "https://meal-attendance-app.firebaseio.com",
+  projectId: "meal-attendance-app",
+  storageBucket: "meal-attendance-app.appspot.com",
+  messagingSenderId: "95847112468"
 };
 
 firebase.initializeApp(config);
