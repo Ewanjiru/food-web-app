@@ -1,0 +1,45 @@
+
+.frame {
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	max-width: 1440px;
+	max-height: 1024px;
+  background-color: #fafafa;
+	border: 1px solid #cecece;
+	padding: 160px 50px 160px 100px;
+}
+.logo {
+	max-width: 100%;
+	height: auto;
+	font-family: Chalkduster;
+	font-size: 350%;
+	text-align: left;
+	color: #f2393d;
+}
+.sign-in-with-google{
+	
+	border-radius: 3.9em;
+  background-color: #f2393d;
+  font-family: ChalkboardSE;
+  font-size: 0.9em;
+	font-weight: 300;
+	color: #ffffff;
+	padding: 10px 20px;
+}
+.provide-feedback-section {
+	font-family: ChalkboardSE;
+	font-size: 120%;
+	text-align: left;
+	color: #646773;
+	margin-bottom: 10%;
+}
+.dasboard-left{
+	margin-top: 10%
+
+}
+.dashboard-right .img-fluid {
+	max-height: 512px;
+}
+
