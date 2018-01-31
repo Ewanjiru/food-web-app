@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GoogleLogin from './Auth/GoogleLogin';
 import styles from '../styles/styles.css';
 
 class Dashboard extends Component {
@@ -14,7 +15,7 @@ class Dashboard extends Component {
             Provide feedback for a more delightful <br/>
             food experience!
             </div>
-            <button className="sign-in-with-google">Sign In With Google</button>
+            <GoogleLogin />
           </div>
           <div className="dashboard-right col-6">
               <img className="img-fluid" src= {require('../images/iphone.png')}/>
