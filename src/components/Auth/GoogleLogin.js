@@ -1,6 +1,9 @@
 import firebase from './firebase.js';
+import { connect } from 'react-redux';
+import React from 'react';
+import { bindActionCreators } from 'redux';
 import decodeToken from './decodeToken';
-const React = require('react');
+import loginActions from '../../actions/login'
 import { hashHistory } from 'react-router';
 
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -35,15 +38,16 @@ class Login extends React.Component {
   }
 
   login() {
-    auth.signInWithRedirect(provider)
-      .then((result) => {
-        const user = result.user;
-        this.setState({
-          user
-        });
-      });
-      this.state.user &&
-      hashHistory.push('/user');
+
+    // auth.signInWithRedirect(provider)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     this.setState({
+    //       user
+    //     });
+    //   });
+    //   this.state.user &&
+    //   hashHistory.push('/user');
       
   }
   validateUser (){
@@ -61,5 +65,10 @@ class Login extends React.Component {
     )
   }
 }
+const mapStateToProps = login => ({
+  login
+})
+
+
 
 export default Login;
