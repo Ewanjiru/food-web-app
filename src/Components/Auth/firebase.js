@@ -8,6 +8,9 @@ const config = {
   storageBucket: "meal-attendance-app.appspot.com",
   messagingSenderId: "95847112468"
 };
+// if (!firebase.apps.length) {
+//   firebase.initializeApp({});
+// }
 
 firebase.initializeApp(config);
 

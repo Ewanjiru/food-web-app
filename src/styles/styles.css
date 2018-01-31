@@ -19,17 +19,16 @@
 	color: #f2393d;
 }
 .sign-in-with-google{
-	
 	border-radius: 3.9em;
   background-color: #f2393d;
-  font-family: ChalkboardSE;
+  font-family: Chalkboard;
   font-size: 0.9em;
 	font-weight: 300;
 	color: #ffffff;
 	padding: 10px 20px;
 }
 .provide-feedback-section {
-	font-family: ChalkboardSE;
+	font-family: Chalkboard;
 	font-size: 120%;
 	text-align: left;
 	color: #646773;

@@ -1,6 +1,7 @@
 import firebase from './firebase.js';
-import "./Login.css";
+import decodeToken from './decodeToken';
 const React = require('react');
+import { hashHistory } from 'react-router';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -13,6 +14,7 @@ class Login extends React.Component {
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.validateUser = this.validateUser.bind(this);
   }
 
   componentDidMount() {
@@ -40,22 +42,22 @@ class Login extends React.Component {
           user
         });
       });
+      this.state.user &&
+      hashHistory.push('/user');
+      
   }
+  validateUser (){
+    const userDetails = decodeToken()
+    console.log('userdet', userDetails)
+  }
+
   render() {
+    console.log('user', this.state.user)
     return (
-      <header>
-        <div className="login">
-          {this.state.user ?
-           <div className='login'>
-           <img className="image" style={{backgroundColor: 'white',width: '2.5rem',height: '2.5rem', borderRadius: '50%', margin: '.5rem',textAlign: 'right'}} src={this.state.user.photoURL} />
-           
-           <button onClick={this.logout}>Log Out</button>
-            </div>
-            :
-            <button onClick={this.login}>Log In</button>
-          }
+  
+        <div>
+            <button className="sign-in-with-google" onClick={this.validateUser}>Sign In With Google</button>
         </div>
-      </header>
     )
   }
 }

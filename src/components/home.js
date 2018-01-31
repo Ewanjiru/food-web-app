@@ -8,7 +8,6 @@ import React from 'react';
 // } from 'reactstrap';
 import Sidebar from './sidebar';
 import Vendors from './vendors';
-import Login from "./Auth/Login.jsx";
 
 class Home extends React.Component {
   constructor(props) {
@@ -23,7 +22,6 @@ class Home extends React.Component {
           <div className="header">
             <Navbar color="faded" light expand="md">
               <div className="profile">
-              <Login />
               </div>
               <InputGroup>
                 <Input placeholder="Search ..." />

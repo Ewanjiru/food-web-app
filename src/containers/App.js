@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from '../Components/home';
 import Dashboard from '../components/dashboard';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   render() {
