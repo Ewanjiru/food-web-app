@@ -1,0 +1,283 @@
+*{
+  font-family: sans-serif;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.content{
+ margin-left: 10px;
+}
+
+.vendoers .header{
+	border-bottom: solid 1px #e9e9e9;
+}
+
+.content-wrapper{
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.sidebar{
+  display: grid;
+  width: 15%;
+  min-width: 15%;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px 0 rgba(72, 72, 72, 0.5);
+}
+
+.sidebar .profile{
+  width: 80%;
+  max-height: 60%;
+  margin: 10%;
+  align-content: center;
+}
+
+.sidebar img{
+  margin: 15px 15px 0px;
+  border-radius: 50%;
+  width: 80%;
+  min-width: 30%;
+  height: 80%;
+}
+.sidebar h5{
+  margin: 15px 15px 0px; 
+}
+
+.sidebar .nav{
+display: block;
+border-top: solid 1px #f1f1f1;
+padding-top: 10px;
+}
+
+.sidebar ul{
+  list-style: none;
+}
+
+.sidebar ul li{
+  border-bottom: solid 1px #f1f1f1;
+  padding: 10px;
+}
+
+.sidebar ul li a{
+  color: rgb(176, 176, 176);
+}
+
+.sidebar ul li a:hover{
+  color: #464546;
+}
+
+.sidebar ul li  a:active{
+  color:white;
+  background-color: rgb(67, 64, 89);
+}
+
+.sidebar li{
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.sidebar li .fa{
+  margin-right: 11%;
+  margin-left:  11%;
+}
+
+.sidebar li a{
+  padding: 0px;
+}
+
+.content{
+  display: block;
+  width: 85%;
+  background-color: #f7f8f9;
+}
+
+.header{
+  display: flex;
+}
+
+.header .navbar{
+  width: 100%;
+  display: block;
+  background-color: #f7f8f9;
+}
+
+.header .input-group{
+  width: 200px;
+  float: right;
+}
+
+.header .input-group input{
+  background-color: rgb(243, 240, 237);
+  opacity: 0.6;
+}
+
+.vendors{
+  width: 97%;
+  background-color: #f7f8f9;
+  margin: 15px auto;
+  height: 90%;
+  border-radius: 10px;
+}
+
+.vendors .header{
+  display: flex;
+  border-bottom: solid 1px #e9e9e9;
+  margin-bottom: 5px;
+  font-family: ChalkboardSE;
+	font-weight: bold;
+	text-align: center;
+	color: #37204e;
+}
+
+button.fa{
+  border: 0;
+  padding: 0;
+}
+
+.fa-plus-circle{
+font-size: 20px;
+float: right;
+margin-left: 90%;
+}
+
+.vendors-content{
+  margin: 2rem auto;
+  display: grid;
+  max-width: 100%;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+}
+
+.card{
+  width: 100%;
+  margin-right: auto;
+  border-radius: 4px;
+  margin-top: 30px;
+	background-color: #ffffff;
+  box-shadow: 0 0 8px 0 rgba(72, 72, 72, 0.5);
+  align-content: center;
+}
+
+.card-body{
+  margin: 10% 10%;
+	text-align: left;
+  color: #464546;
+}
+
+.card .card-footer{
+  align-content: right;
+  border-top: 0px;
+  background-color: #ffffff;
+}
+
+.card-footer .fa{
+  margin-right: 3%;
+  color: #000000;
+}
+.fa-trash:before{
+  color: #f22724;
+}
+
+.form-group .form-control, .form-group .react-datepicker-wrapper .form-control{
+  background-color: #d8d8d8;
+}
+
+.form-group .react-datepicker-wrapper, .react-datepicker__input-container{
+  width: 100%;
+}
+
+#delete-visible.fade{
+  opacity:initial;
+  display: block;
+  background-color: rgba(88, 88, 89, 0.65);
+}
+
+#delete-visible .modal-dialog{
+  overflow:visible;
+  position: relative;
+  align-content: center;
+  margin: 20% auto;
+}
+
+#delete-visible .modal-content {
+  background-color: #ffffff;
+}
+
+#add-visible.fade{
+  opacity:initial;
+  display: block;
+  background-color: rgba(88, 88, 89, 0.65);
+}
+
+#add-visible .modal-dialog{
+  overflow:visible;
+  position: relative;
+  align-content: center;
+  margin: 20% auto;
+}
+
+#add-visible .modal-content {
+  background-color: #ffffff;
+}
+
+#edit-visible.fade{
+  opacity:initial;
+  display: block;
+  background-color: rgba(88, 88, 89, 0.65);
+}
+
+#edit-visible .modal-dialog{
+  overflow:visible;
+  position: relative;
+  align-content: center;
+  margin: 20% auto;
+}
+
+#edit-visible .modal-content {
+  background-color: #ffffff;
+}
+
+#first-column{
+  color: rgb(39, 164, 166);
+}
+
+.logout{
+  margin-top: 100%;
+}
+
+.logout .nav, .logout ul li{
+  border: 0px;
+}
+
+.logout .fa {
+    margin-right: 11%;
+    margin-left: 11%;
+}
