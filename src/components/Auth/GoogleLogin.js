@@ -1,10 +1,13 @@
 import firebase from './firebase.js';
 import { connect } from 'react-redux';
 import React from 'react';
+import toastr from 'toastr';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
 import decodeToken from './decodeToken';
-import loginActions from '../../actions/login'
+import * as loginActions from '../../actions/login'
 import { hashHistory } from 'react-router';
+import { error } from 'util';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -22,9 +25,15 @@ class Login extends React.Component {
 
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user });
+      const andelaEmailRegex = /@andela.com$/
+      if (!andelaEmailRegex.test(user.email.toString())) {
+        this.props.history.push("/");
+        return toastr.error('nop!')
       }
+      console.log('user2', user);
+      this.props.actions.userLogin(user) &&
+      this.props.history.push("/user");
+
     });
   }
 
@@ -38,37 +47,32 @@ class Login extends React.Component {
   }
 
   login() {
+    this.props.actions.performLogin();
 
-    // auth.signInWithRedirect(provider)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     this.setState({
-    //       user
-    //     });
-    //   });
-    //   this.state.user &&
-    //   hashHistory.push('/user');
-      
   }
-  validateUser (){
+  validateUser() {
     const userDetails = decodeToken()
     console.log('userdet', userDetails)
   }
 
   render() {
-    console.log('user', this.state.user)
     return (
-  
-        <div>
-            <button className="sign-in-with-google" onClick={this.validateUser}>Sign In With Google</button>
-        </div>
+
+      <div>
+        <button className="sign-in-with-google" onClick={this.login}>Sign In With Google</button>
+      </div>
     )
   }
 }
-const mapStateToProps = login => ({
-  login
-})
+function mapStateToProps(state) {
+  console.log('login her', state.LoginReducer)
+  return (
+    state.LoginReducer
+  )
+}
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(loginActions, dispatch)
+});
 
 
-
-export default Login;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
