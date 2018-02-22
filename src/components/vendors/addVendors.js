@@ -76,6 +76,7 @@ class AddVendor extends React.Component {
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLongTitle">CREATE VENDOR</h5>
                 <button
+                  id="icons"
                   type="button"
                   className="close"
                   data-dismiss="modal"

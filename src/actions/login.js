@@ -7,20 +7,32 @@ const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
 
 export const userLogin = (user) => (dispatch) => {
-  // const andelaEmailRegex = /@andela.com$/
-  // if (!andelaEmailRegex.test(user.email.toString())) {
-  //   console.log('i got here');
-  //   return toastr.error('error')
-  // } else
-  return({
-  type: ActionTypes.USER_LOGIN,
-  payload: user
-})}
+  return dispatch({
+    type: ActionTypes.USER_LOGIN,
+    payload: user
+  })
+}
 
-
-export  const performLogin = ()=> (
-   dispatch => {
+export const performLogin = () => (
+  dispatch => {
     auth.signInWithRedirect(provider)
   }
 )
 
+export const performLogout = () => (
+  dispatch => {
+    auth.signOut()
+      .then(() => {
+        dispatch({
+          type: ActionTypes.USER_LOGOUT,
+          error: false
+        })
+      }).catch(error => {
+        dispatch({
+          type: ActionTypes.USER_LOGOUT,
+          error: true
+        })
+        toastr.error(error);
+      })
+  }
+)

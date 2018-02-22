@@ -66,7 +66,13 @@ class Vendors extends React.Component {
           <div className="vendors">
             <div className="header">
               <h4>Vendors</h4>
-              <button className="fa fa-plus-circle" aria-hidden="true" name="add" onClick={(event) => this.handleChange(event, null)}></button>
+              <button
+                id="icons"
+                className="fa fa-plus-circle"
+                aria-hidden="true"
+                name="add"
+                onClick={(event) => this.handleChange(event, null)}
+              />
             </div>
             <div className="vendors-content">
               {
@@ -78,8 +84,18 @@ class Vendors extends React.Component {
                         <p className="card-text">Date: {vendor.value.date_created} </p>
                       </div>
                       <div className="card-footer">
-                        <button className="fa fa-pencil-square-o" aria-hidden="true" name="edit" onClick={(event) => this.handleChange(event, vendor)}></button>
-                        <button className="fa fa-trash" aria-hidden="true" name="delete" onClick={(event) => this.handleChange(event, vendor)}></button>
+                        <button
+                          id="icons"
+                          className="fa fa-trash"
+                          aria-hidden="true"
+                          name="delete"
+                          onClick={(event) => this.handleChange(event, vendor)} />
+                        <button
+                          id="icons"
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                          name="edit"
+                          onClick={(event) => this.handleChange(event, vendor)} />
                       </div>
                     </div>
                   ))
@@ -109,7 +125,7 @@ class Vendors extends React.Component {
 
 const mapStateToProps = state => (
   {
-    vendors: state
+    vendors: state,
   }
 )
 

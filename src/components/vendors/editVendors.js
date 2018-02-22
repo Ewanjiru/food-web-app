@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import toastr from 'toastr';
 import * as vendorActions from '../../actions/actions.js';
 
 class EditVendor extends React.Component {
@@ -10,21 +13,23 @@ class EditVendor extends React.Component {
       modalOpen: '',
       vendorName: '',
       vendorKey: '',
-      date_created: ''
+      startDate: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.editVendor = this.editVendor.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     const { open, selectedVendor } = nextProps;
     if (open === 'edit') {
       const { value, key } = selectedVendor
+      const date = moment(value.date_created, "DD/MM/YYYY");
       this.setState({
         modalOpen: open,
         vendorKey: key,
         vendorName: value.vendorName,
-        date_created: value.date_created
+        startDate: date
       })
     } else
       this.setState({
@@ -33,21 +38,32 @@ class EditVendor extends React.Component {
   }
 
   handleInputChange(event) {
-    const { name, value } = event.target;
-    const { vendorName, date_created } = this.state;
+    const { value } = event.target;
+    const { vendorName } = this.state;
     this.setState({
-      [name]: value
+      vendorName: value
+    });
+  }
+
+  handleDateChange(date) {
+    const date_created = moment(date, "DD/MM/YYYY")
+    this.setState({
+      startDate: date_created
     });
   }
 
   editVendor() {
-    const { vendorKey, vendorName, date_created } = this.state;
-    this.props.actions.editVendor(vendorKey, { vendorName, date_created });
-    this.props.close();
+    const { vendorKey, vendorName, startDate } = this.state;
+    if (vendorName !== '' && startDate !== '') {
+      const date_created = moment(startDate).format("DD/MM/YYYY");
+      this.props.actions.editVendor(vendorKey, { vendorName, date_created });
+      this.props.close();
+    } else
+      toastr.error("Fill all inputs")
   }
 
   render() {
-    const { modalOpen, vendorName, date_created } = this.state;
+    const { modalOpen, vendorName, startDate } = this.state;
     return (
       <div className='edit-vendor' >
         <div
@@ -61,14 +77,25 @@ class EditVendor extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLongTitle">EDIT VENDOR</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => this.props.close()}>
+                <button
+                  id="icons"
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  onClick={() => this.props.close()}
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
                 <form>
                   <div className="form-group">
-                    <label htmlFor="vendor-name" className="col-form-label">Vendor Name:</label>
+                    <label
+                      htmlFor="vendor-name"
+                      className="col-form-label"
+                    >Vendor Name:
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -79,14 +106,19 @@ class EditVendor extends React.Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="date-started" className="col-form-label">Date Started:</label>
-                    <input
-                      type="text"
+                    <label
+                      htmlFor="date-started"
+                      className="col-form-label"
+                    >Date Started:
+                    </label>
+                    <DatePicker
                       className="form-control"
-                      id="recipient-name"
-                      name="date_created"
-                      value={date_created}
-                      onChange={this.handleInputChange}
+                      selected={startDate}
+                      onChange={this.handleDateChange}
+                      maxDate={moment()}
+                      dateFormat={"DD/MM/YYYY"}
+                      readOnly={true}
+                      showDisabledMonthNavigation
                     />
                   </div>
                 </form>

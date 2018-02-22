@@ -1,10 +1,11 @@
-import { USER_LOGIN } from '../actions/actionTypes';
+import { USER_LOGIN, USER_LOGOUT } from '../actions/actionTypes';
 
 export default function LoginReducer(state = {}, action) {
   switch (action.type) {
     case USER_LOGIN:
-    console.log('login', action.payload)
       return action.payload;
+    case USER_LOGOUT:
+      return action.error === false ? {} : state;
     default:
       return state;
   }

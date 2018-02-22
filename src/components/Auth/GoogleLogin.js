@@ -28,12 +28,10 @@ class Login extends React.Component {
       const andelaEmailRegex = /@andela.com$/
       if (!andelaEmailRegex.test(user.email.toString())) {
         this.props.history.push("/");
-        return toastr.error('nop!')
+        return toastr.error('Please retry using an andela email address');
       }
-      console.log('user2', user);
       this.props.actions.userLogin(user) &&
-      this.props.history.push("/user");
-
+        this.props.history.push("/vendors");
     });
   }
 
@@ -52,7 +50,6 @@ class Login extends React.Component {
   }
   validateUser() {
     const userDetails = decodeToken()
-    console.log('userdet', userDetails)
   }
 
   render() {
@@ -65,7 +62,6 @@ class Login extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  console.log('login her', state.LoginReducer)
   return (
     state.LoginReducer
   )

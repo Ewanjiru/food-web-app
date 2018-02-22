@@ -20,32 +20,37 @@ export const addVendor = (vendor) => {
     database
       .push(vendor)
       .then(response => {
-        console.log('the response is', response);
         const result = response.path;
         if (result.pieces_.length > 0) {
           toastr.success("Vendor Successfully Added")
         }
       })
-      .catch(error => toastr.error("error occured:"))
+      .catch(error => toastr.error(error))
   }
 }
 
 export const removeVendor = (key) => {
   return dispatch => {
     database.child(key).remove()
-      .then(response => {
-        console.log('the response is', response);
+      .then(() => {
+        toastr.success('Vendor successfully removed');
       })
-      .catch(error => console.log("error", error));
+      .catch(error => toastr.error(error));
   }
 }
 
 export const editVendor = (key, vendor) => {
+  const { vendorName, date_created } = vendor;
   return dispatch => {
-    database.child('' + key + '').update(vendor)
-      .then(response => {
-        console.log('the response is', response);
-      })
-      .catch(error => console.log("error", error));
+    database.child(key).once('value', snapshot => {
+      if (vendorName !== snapshot.val().vendorName || date_created !== snapshot.val().date_created) {
+        database.child(key).update(vendor)
+          .then(response => {
+            toastr.success('Vendor successfully Edited');
+          })
+          .catch(error => toastr.error(error));
+      } else
+        toastr.error('No change detected');
+    })
   }
 }

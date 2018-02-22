@@ -33,11 +33,21 @@ class DeleteVendor extends React.Component {
   render() {
     return (
       <div className="delete-vendors">
-        <div className="modal fade" id={`${this.state.modalOpen}-visible`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal fade"
+          id={`${this.state.modalOpen}-visible`}
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => this.props.close()}>
+                <button
+                  id="icons"
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close" onClick={() => this.props.close()}>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -46,8 +56,19 @@ class DeleteVendor extends React.Component {
                 <p>This action cannot be reversed.</p>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.removeVendor}>Yes</button>
-                <button type="button" className="btn btn-secondary" onClick={() => this.props.close()}> No</button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-dismiss="modal"
+                  onClick={this.removeVendor}
+                >Yes
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => this.props.close()}
+                > No
+                </button>
               </div>
             </div>
           </div>
