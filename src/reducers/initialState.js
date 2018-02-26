@@ -1,5 +1,6 @@
 export default {
   vendors: {},
   mealItems: {},
-  meals: {}
+  meals: {},
+  user: {},
 }

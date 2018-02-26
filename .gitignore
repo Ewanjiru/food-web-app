@@ -22,3 +22,5 @@ yarn-error.log*
 
 /dist
 /font-awesome-4.7.0/
+libs/
+images/
