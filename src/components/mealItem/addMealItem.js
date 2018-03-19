@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as mealItemsActions from '../../actions/mealItems/mealItem';
+import * as mealItemsActions from '../../actions/mealItemActions';
 import toastr from 'toastr';
 
 
@@ -40,6 +40,7 @@ class AddMenuItem extends React.Component {
   
   addNewMealItem() {
     const { mealItem } = this.state
+    console.log('mmmmmm', mealItem);
     if (mealItem !== '') {
       this.props.actions.addMealItem(mealItem);
       this.props.close();

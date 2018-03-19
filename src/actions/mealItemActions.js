@@ -1,14 +1,13 @@
-import firebase from '../../components/Auth/firebase';
+import firebase from '../components/Auth/firebase';
 import toastr from 'toastr';
 
-const database = firebase.database().ref().child('meal-items');
+const database = firebase.database().ref().child('meal_items');
 
 export const LOAD_MEAL_ITEM = 'LOAD_MEAL_ITEM';
 
 export const loadAllMealItems = () => {
   return dispatch => {
     database.on('value', snapshot => {
-      console.log('snapshot',snapshot.val() )
       dispatch({
         type: LOAD_MEAL_ITEM,
         payload: snapshot.val()
@@ -20,7 +19,7 @@ export const addMealItem = (mealItem) => {
   return dispatch => {
     const ref = database.push();
     database
-      .child(ref.key).set({'meal-id': ref.key, 'name':mealItem})
+      .child(ref.key).set({'name': mealItem})
       .then(response => {
         const result = response.path;
         if (result.pieces_.length > 0) {
@@ -30,16 +29,12 @@ export const addMealItem = (mealItem) => {
       .catch(error => toastr.error(error))
   }
 }
-export const editMealItem = (mealName, mealId, mealkey) => {
-  mealId = ["meal-id"]
-  mealName = name
+export const editMealItem = (meal_id, name) => {
   return dispatch => {
-    database.child(mealkey).once('value', snapshot => {
-      console.log('snapshot', snapshot.val());
+    database.child(meal_id).once('value', snapshot => {
       if (name !== snapshot.val().name) {
-        database.child(mealkey).update({["meal-id"]: mealId, name:mealName})
+        database.child(meal_id).set({ 'name':name})
           .then(response => {
-            console.log('res', response);
             toastr.success('Menu Item successfully Edited');
           })
           .catch(error => toastr.error(error));
@@ -49,7 +44,6 @@ export const editMealItem = (mealName, mealId, mealkey) => {
   }
 }
 export const deleteMealItem = (key) => {
-  console.log('key',key);
   return dispatch => {
     database.child(key).remove()
       .then(() => {

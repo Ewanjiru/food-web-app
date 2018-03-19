@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as mealItemsActions from '../../actions/mealItems/mealItem';
+import * as mealItemsActions from '../../actions/mealItemActions';
 import AddMealItem from './addMealItem';
 import EditMealItem from './editMealItem';
 import DeleteMealItem from './deleteMealItem';
@@ -53,20 +53,18 @@ class MealItems extends React.Component {
         });
       }
     }
-
-
     return (
       <div>
         <h4> Meal Items </h4>
         <button
           name="add"
           onClick={(event) => this.handleChange(event, null)}
-        > Add Menu Item </button>
+        > Add Meal Item </button>
         <ul className="list-group">
           {
             mealItemsArray.map(mealItem => {
               return (
-                <div>
+                <div key={mealItem.key}>
                   <li className="list-group-item">{mealItem.value.name}
                     <button
                       id="icons"

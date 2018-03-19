@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as mealItemsActions from '../../actions/mealItemActions';
+import * as mealActions from '../../actions/mealActions';
 
-class DeleteMealItem extends React.Component {
+class DeleteMeal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: '',
+      selectedMeal: ''
     }
-    this.deleteMealItem = this.deleteMealItem.bind(this);
+    this.deleteThisMeal = this.deleteThisMeal.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,9 +25,9 @@ class DeleteMealItem extends React.Component {
       })
   }
 
-  deleteMealItem() {
-    console.log('this.props.mealItem.key',this.props.mealItem.key);
-    this.props.actions.deleteMealItem(this.props.mealItem.key);
+  deleteThisMeal() {
+    const { meal, selectedMeal } = this.props;
+    this.props.actions.deleteMeal(meal, selectedMeal);
     this.props.close();
   }
 
@@ -52,7 +53,7 @@ class DeleteMealItem extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <h4> Delete Menu Item? </h4>
+                <h4> Are you sure to delete this meal? </h4>
                 <p>This action cannot be reversed.</p>
               </div>
               <div className="modal-footer">
@@ -60,7 +61,7 @@ class DeleteMealItem extends React.Component {
                   type="button"
                   className="btn btn-primary"
                   data-dismiss="modal"
-                  onClick={this.deleteMealItem}
+                  onClick={this.deleteThisMeal}
                 >Yes
                 </button>
                 <button
@@ -80,14 +81,14 @@ class DeleteMealItem extends React.Component {
 
 const mapStateToProps = state => (
   {
-    mealItems: state
+    vendors: state
   }
 )
 
 const mapDispatchToProps = dispatch => (
   {
-    actions: bindActionCreators(mealItemsActions, dispatch)
+    actions: bindActionCreators(mealActions, dispatch)
   }
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteMealItem);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteMeal);

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import * as mealItemsActions from '../../actions/mealItems/mealItem';
+import * as mealItemsActions from '../../actions/mealItemActions';
 
 class EditMealItem extends React.Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class EditMealItem extends React.Component {
     this.state = {
       modalOpen: '',
       mealId: '',
-      mealkey: '',
       mealName:''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -18,12 +17,12 @@ class EditMealItem extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('next', nextProps);
     const { open, mealItem } = nextProps;
     if (open === 'edit') {
       this.setState({
         modalOpen: open,
-        mealkey: mealItem.key,
-        mealId:mealItem.value["meal-id"],
+        mealId:mealItem.key,
         mealName: mealItem.value.name
       })
     } else
@@ -42,9 +41,9 @@ class EditMealItem extends React.Component {
 
 
  editMenuItem() {
-  const { mealName, mealId, mealkey } = this.state;
-  if (mealName !== '') {
-      this.props.actions.editMealItem(mealName, mealId, mealkey);
+  const { mealId:meal_id , mealName: name } = this.state;
+  if (name !== '') {
+      this.props.actions.editMealItem(meal_id, name);
       this.props.close();
  } else
    toastr.error("Fill all inputs")

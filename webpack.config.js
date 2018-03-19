@@ -24,6 +24,9 @@ module.exports = {
   node: {
     global: true
   },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
