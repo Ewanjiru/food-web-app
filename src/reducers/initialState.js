@@ -3,4 +3,6 @@ export default {
   mealItems: {},
   meals: {},
   user: {},
+  ratings: {},
+  comments: {}
 }

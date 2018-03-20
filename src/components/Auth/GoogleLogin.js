@@ -4,7 +4,6 @@ import React from 'react';
 import toastr from 'toastr';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
-import decodeToken from './decodeToken';
 import * as loginActions from '../../actions/login'
 import { hashHistory } from 'react-router';
 import { error } from 'util';

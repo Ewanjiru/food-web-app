@@ -153,6 +153,10 @@ float: right;
 margin-left: 90%;
 }
 
+.container{
+  display: grid;
+}
+
 .vendors-content{
   margin: 2rem auto;
   display: grid;
@@ -308,4 +312,39 @@ margin-left: 90%;
 .logout .fa {
     margin-right: 11%;
     margin-left: 11%;
+}
+
+.ratings{
+  background-color: blue;
+}
+
+.comments{
+  background-color: wheat;
+}
+
+.minimize-contents{
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  position: relative
+}
+
+.minimize-contents li {
+ position: relative;
+ width: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Apply animation to this element */	
+ -moz-animation: minimize-contents 5s linear infinite;
+ -webkit-animation: minimize-contents 5s linear infinite;
+ animation: minimize-contents 20s linear infinite;
+}
+/* Move it (define the animation) */
+@keyframes minimize-contents {
+ 100% { 
+ -moz-transform: translateY(-100%); /* Browser bug fix */
+ -webkit-transform: translateY(-100%); /* Browser bug fix */
+ transform: translateY(-100%); 
+ }
 }
