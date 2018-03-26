@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MaximizeRatings from './maximizeRatings.js';
 import MinimizeRatings from './minimizeRatings.js';
+import * as ratingsActions from '../../../actions/ratings.js';
 
 class Ratings extends React.Component {
   constructor(props) {
@@ -10,6 +11,10 @@ class Ratings extends React.Component {
     this.state = {
       maximise: true
     }
+  }
+
+  componentDidMount() {
+    this.props.actions.loadAllRatings();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,4 +64,19 @@ class Ratings extends React.Component {
   }
 }
 
-export default Ratings;
+const mapStateToProps = state => (
+  {
+    comments: state.CommentsReducer,
+    ratings: state.RatingsReducer,
+    mealItems: state.MealItemsReducer,
+    meals: state.MealReducer,
+  }
+)
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    actions: bindActionCreators({ ...ratingsActions }, dispatch)
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ratings);

@@ -17,7 +17,6 @@ class EditMealItem extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('next', nextProps);
     const { open, mealItem } = nextProps;
     if (open === 'edit') {
       this.setState({

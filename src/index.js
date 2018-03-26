@@ -10,9 +10,9 @@ import Routes from './routes'
 const store = AppStore();
 render((
   <Provider store={store}>
-    <HashRouter>
+    <BrowserRouter>
       <Routes />
-    </HashRouter>
+    </BrowserRouter>
   </Provider>), document.getElementById('root')
 );
 

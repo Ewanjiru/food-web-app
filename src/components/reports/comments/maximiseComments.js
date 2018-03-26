@@ -30,7 +30,7 @@ class MaximizeComments extends React.Component {
   }
 
   render() {
-    const commentsArray = this.props.comments;
+    const { meals, comments } = this.props;
     const today = moment(Date()).format('L');
     let { startDate, endDate } = this.state;
     startDate = moment(startDate).format('L');
@@ -63,40 +63,30 @@ class MaximizeComments extends React.Component {
         </div>
 
         {
-          commentsArray.filter(comment => moment(comment.key).format('L').valueOf() <= endDate.valueOf() &&
-            moment(comment.key).format('L').valueOf() >= startDate.valueOf()).map(comment => {
-              let commentsArr = [];
-              for (let key in comment.value) {
-                if (comment.value.hasOwnProperty(key)) {
-                  commentsArr.push({
-                    key: key,
-                    value: comment.value[key]
-                  });
-                }
-              }
+          comments && comments.filter(comment => moment(comment.DateCreated).format('L').valueOf() <= endDate.valueOf() &&
+            moment(comment.DateCreated).format('L').valueOf() >= startDate.valueOf()).map(comment => {
+              let mealTitle = '';
+              meals.filter(meal => {
+                (meal.breakfast === comment.mealId) ? mealTitle = 'BreakFast' : mealTitle = 'Lunch';
+                return mealTitle;
+              })
               return (
                 <div className="maxi-body">
-                  <h5>{comment.key}</h5>
-                  {
-                    commentsArr.map(singleComment => {
-                      return (
-                        <span>
-                          {singleComment.key} &nbsp;
+                  <h5>{comment.DateCreated}</h5>
+                  <span>
+                    {mealTitle}&nbsp;
                         {
-                            singleComment.value.map(commen => {
-                              return (
-                                <p>
-                                  {commen.comment}
-                                  &nbsp;By&nbsp;
-                                {commen.email}
-                                </p>
-                              )
-                            })
-                          }
-                        </span>
-                      )
-                    })
-                  }
+                      comment.data.map(commentData => {
+                        return (
+                          <p>
+                            {commentData.comment}
+                            &nbsp;By&nbsp;
+                                {commentData.email}
+                          </p>
+                        )
+                      })
+                    }
+                  </span>
                 </div>
               )
             })

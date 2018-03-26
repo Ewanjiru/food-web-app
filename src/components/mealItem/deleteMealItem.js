@@ -25,7 +25,6 @@ class DeleteMealItem extends React.Component {
   }
 
   deleteMealItem() {
-    console.log('this.props.mealItem.key',this.props.mealItem.key);
     this.props.actions.deleteMealItem(this.props.mealItem.key);
     this.props.close();
   }

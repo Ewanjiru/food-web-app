@@ -2,42 +2,32 @@ import React from 'react';
 import moment from 'moment';
 
 const MinimizeComments = (props) => {
-  const commentsArray = props.comments;
+  const { comments, meals } = props;
   const today = moment('2018-02-03').format('L');
   return (
     <div className='minimize-contents'>
       {
-        commentsArray.filter(comment => today.valueOf() === moment(comment.key).format('L').valueOf())
-          .map(comment => {
-            let commentsArr = [];
-            for (let key in comment.value) {
-              if (comment.value.hasOwnProperty(key)) {
-                commentsArr.push({
-                  key: key,
-                  value: comment.value[key]
-                });
-              }
-            }
+        comments.filter(comment => today.valueOf() === moment(comment.DateCreated).format('L').valueOf())
+          .map((comment, index) => {
+            let mealTitle = '';
+            meals.filter(meal => {
+              (meal.breakfast === comment.mealId) ? mealTitle = 'BreakFast' : mealTitle = 'Lunch';
+              return mealTitle;
+            })
             return (
-              <div>
+              <div key={index}>
                 <h5>Today's Meals Comments &nbsp;</h5>
                 {
-                  commentsArr.map((singleComment, index) => {
+                  comment.data.map((singleComment, index) => {
                     return (
                       <p key={index}>
-                        {
-                          singleComment.value.map(commen => {
-                            return (
-                              <li key={index}>
-                                {singleComment.key}
-                                &nbsp;: &nbsp;
+                        <li>
+                          {mealTitle}
+                          &nbsp;: &nbsp;
                                 {commen.comment}
-                                &nbsp;By&nbsp;
+                          &nbsp;By&nbsp;
                                 {commen.email}
-                              </li>
-                            )
-                          })
-                        }
+                        </li>
                       </p>
                     )
                   })

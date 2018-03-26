@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MinimizeComments from './minimizeComments';
 import MaximizeComments from './maximiseComments';
+import * as commentsActions from '../../../actions/reports.js';
+import { itemsArr } from '../../../helpers/common.js';
 
 class Comments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: {},
       maximise: false
     }
+  }
+
+  componentWillMount() {
+    this.props.actions.loadAllComments();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,17 +29,10 @@ class Comments extends React.Component {
   }
 
   render() {
-    const { comments } = this.props;
+    const { comments, meals } = this.props;
     const { maximise } = this.state;
-    let commentsArray = [];
-    for (let key in comments) {
-      if (comments.hasOwnProperty(key)) {
-        commentsArray.push({
-          key: key,
-          value: comments[key]
-        });
-      }
-    }
+    const commentsArray = itemsArr(comments);
+    const mealsArray = itemsArr(meals);
     return (
       <div className="comments">
         <div className="comments-header">
@@ -49,9 +47,13 @@ class Comments extends React.Component {
         <div className="comments-body">
           {
             (this.state.maximise) ?
-              <MaximizeComments comments={commentsArray} />
+              <MaximizeComments
+                comments={commentsArray}
+                meals={mealsArray} />
               :
-              <MinimizeComments comments={commentsArray} />
+              <MinimizeComments
+                comments={commentsArray}
+                meals={mealsArray} />
           }
         </div>
       </div>
@@ -59,4 +61,18 @@ class Comments extends React.Component {
   }
 }
 
-export default Comments;
+const mapStateToProps = state => (
+  {
+    comments: state.CommentsReducer,
+    mealItems: state.MealItemsReducer,
+    meals: state.MealReducer,
+  }
+)
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    actions: bindActionCreators({ ...commentsActions }, dispatch)
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

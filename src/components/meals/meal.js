@@ -20,7 +20,7 @@ class Meals extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.actions.loadAllMeals();
   }
   componentWillReceiveProps(nextProps) {

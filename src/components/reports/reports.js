@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 import Sidebar from '../sidebar.js';
 import Comments from './comments/comments.js';
 import Ratings from './ratings/ratings.js';
-import * as commentsActions from '../../actions/reports.js';
-import * as ratingsActions from '../../actions/ratings.js';
 
 class Reports extends React.Component {
   constructor(props) {
@@ -16,11 +14,6 @@ class Reports extends React.Component {
     this.handleToggle = this.handleToggle.bind(this);
   }
 
-  componentDidMount() {
-    this.props.actions.loadAllComments();
-    this.props.actions.loadAllRatings();
-  }
-
   handleToggle(event) {
     this.setState({
       maximized: event.target.name
@@ -29,7 +22,7 @@ class Reports extends React.Component {
 
   render() {
     return (
-      <div className="content-wrapper">
+      <div className="content-wrapper" >
         <Sidebar />
         <div className="content">
           <div className="vendors">
@@ -39,11 +32,10 @@ class Reports extends React.Component {
             <div className="vendors-content">
               <div className="container">
                 <Ratings
-                  ratings={this.props.ratings}
                   maximized={this.state.maximized}
                   handleToggle={this.handleToggle}
                 />
-                <Comments comments={this.props.comments}
+                <Comments
                   maximized={this.state.maximized}
                   handleToggle={this.handleToggle}
                 />
@@ -56,17 +48,4 @@ class Reports extends React.Component {
   }
 }
 
-const mapStateToProps = state => (
-  {
-    comments: state.CommentsReducer,
-    ratings: state.RatingsReducer,
-  }
-)
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    actions: bindActionCreators({ ...ratingsActions, ...commentsActions }, dispatch)
-  }
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(Reports);
+export default Reports;

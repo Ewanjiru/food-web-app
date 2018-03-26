@@ -40,7 +40,6 @@ class AddMenuItem extends React.Component {
   
   addNewMealItem() {
     const { mealItem } = this.state
-    console.log('mmmmmm', mealItem);
     if (mealItem !== '') {
       this.props.actions.addMealItem(mealItem);
       this.props.close();
